@@ -6,14 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <title>employeesList</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="container">
 	<h1>사원 목록</h1>
 		<div>
-			<a href = "${pageContext.request.contextPath}">홈으로</a>
+			<a href = "${pageContext.request.contextPath}" class="btn btn-info" role="button">home</a>
 		</div>
 		<form action="${pageContext.request.contextPath}/employees/getEmployeesList" method = "get">
 			<!-- request.getContextPath()는 이제 안씀 -->
+			<!-- 10개 단위로 출력옵션 -->
 			<select name = "limit">
 				<option value = "10">10</option>
 				<option value = "20">20</option>
@@ -21,10 +34,10 @@
 				<option value = "40">40</option>
 				<option value = "50">50</option>
 			</select>
-			<button>사원 목록</button>
+			<button type = "submit" class="btn btn-outline-secondary">사원 목록</button>
 		</form>
-		<table border = '1'>
-		<!-- 테이블 -->
+		<table class="table table-bordered">
+		<!-- 실제 출력 테이블 -->
 			<thead>
 				<tr>
 					<th>사원 번호</th>
@@ -50,5 +63,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
+</div>
 </body>
 </html>

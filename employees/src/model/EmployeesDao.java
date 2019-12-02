@@ -3,10 +3,32 @@ package model;
 import java.sql.*;
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 import db.DBHelper;
 import vo.*;
 
 public class EmployeesDao {
+	// 로그인
+	public String selectEmployeesLogin(HttpSession session) {
+		System.out.println("로그인 확인");
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBHelper.getConnection();
+			stmt = conn.prepareStatement("");
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			DBHelper.close(rs, stmt, conn);
+		}
+		
+		return "";
+	}
+	
 	//남,녀 직원수 출력하기
 	public List<Map<String, Object>> selectEmployeesListCountByGender() {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();

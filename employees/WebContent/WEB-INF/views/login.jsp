@@ -13,12 +13,16 @@
 		<div>
 			<form action = "${pathContext.request.contextPath}/login" method = "post">
 				<div>
-					login :
-					<input type = "text" name = "loginId">
+					First_name :
+					<input type = "text" name = "firstName" value = "Hong">
 				</div>
 				<div>
-					password : 
-					<input type = "password" name = "loginPw">
+					Last_name : 
+					<input type = "password" name = "lastName" value = "Gildong">
+				</div>
+				<div>
+					emp_no
+					<input type = "text" name = "empNo" value = "1">
 				</div>
 				<button type = "submit">login</button>
 			</form>

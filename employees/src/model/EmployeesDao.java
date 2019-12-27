@@ -10,15 +10,24 @@ import vo.*;
 
 public class EmployeesDao {
 	// 로그인
-	public String selectEmployeesLogin(HttpSession session) {
+	public int selectEmployeesLogin(String firstName, String lastName, int empNo) {
 		System.out.println("로그인 확인");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		int sessionEmpNo = 0;
 		
 		try {
 			conn = DBHelper.getConnection();
-			stmt = conn.prepareStatement("");
+			stmt = conn.prepareStatement("select emp_no from employees where first_name=? and last_name =? and emp_no=?");
+			stmt.setString(1, firstName);
+			stmt.setString(2, lastName);
+			stmt.setInt(3, empNo);
+			rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				sessionEmpNo = rs.getInt(empNo);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			
@@ -26,7 +35,7 @@ public class EmployeesDao {
 			DBHelper.close(rs, stmt, conn);
 		}
 		
-		return "";
+		return sessionEmpNo;
 	}
 	
 	//남,녀 직원수 출력하기

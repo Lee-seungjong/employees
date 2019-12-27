@@ -6,6 +6,7 @@ import java.sql.*;
 public class DBHelper {
 	public static Connection getConnection() throws Exception {
 		Class.forName("org.mariadb.jdbc.Driver");
+		// 나중에 cafe24로 주소 변경
 		Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/employees", "root", "java1234");
 	return conn;
 	}

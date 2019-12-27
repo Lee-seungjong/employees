@@ -19,12 +19,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<!-- 로그인 접속 확인 -->
+<c:if test="${session.sessionId != null }">
+
+</c:if>
+<!-- 로그인시 보여줌 -->
 <div class="container">
 	<h1>Index</h1>
 		<div>
 			<a href = "${pageContext.request.contextPath}" class="btn btn-info" role="button">home</a><!-- index.jsp로 돌아감 -->
 		</div>
-		<h2>테이블 정보</h2><!-- 기본테이블  -->
+		<!-- 로그인시 보여줌 -->
+		<c:if test="${check == true}">
+			<div>
+				<button type = "submit">logout</button>
+			</div>
+		</c:if>
+		<!-- 기본 테이블 -->
+		<h2>테이블 정보</h2>
 		<div>
 			<table class="table table-bordered">
 				<thead>

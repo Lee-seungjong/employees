@@ -14,7 +14,8 @@ import model.EmployeesDao;
 public class Logout extends HttpServlet {
 	private EmployeesDao employeesDao;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().removeAttribute("loginId");
+		HttpSession session = request.getSession();
+		session.invalidate();
 		System.out.println("로그아웃 요청확인");
 	}
 

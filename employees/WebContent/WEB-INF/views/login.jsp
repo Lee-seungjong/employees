@@ -11,7 +11,7 @@
 	<h2>login</h2>
 		<!-- 로그인 폼 -->
 		<div>
-			<form action = "${pathContext.request.contextPath}/login" method = "post">
+			<form action = "${pathContext.request.contextPath}/login" method = "POST">
 				<div>
 					First_name :
 					<input type = "text" name = "firstName" value = "Hong">

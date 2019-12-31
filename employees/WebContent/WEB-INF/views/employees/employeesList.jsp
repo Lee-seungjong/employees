@@ -19,14 +19,60 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<!-- 상단 안내 페이지 -->
+	<div class="jumbotron text-center" style="margin-bottom:0">
+	  <h1>Employees</h1>
+	  <p>employees 프로젝트를 소개하는 페이지 입니다</p> 
+	</div>
+	
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	  <a class="navbar-brand" href="${pageContext.request.contextPath}">Home</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	      	<!-- employees.jsp -->
+	        <a class="nav-link" href="${pageContext.request.contextPath}/employees/getEmployeesList?limit=10">사원목록</a>
+	      </li>
+	      <li class="nav-item">
+	      	<!-- department.jsp -->
+	        <a class="nav-link" href="${pageContext.request.contextPath}/department/getDepartmentList?limit=10">부서목록</a>
+	      </li>
+	     <div class = dropdown>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#" data-toggle="dropdown">사원목록 리스트</a>
+	         <div class="dropdown-menu">
+		      	<a class="dropdown-item" href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=asc">오름차순</a>
+		      	<a class="dropdown-item" href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=desc">내림차순</a>
+		      </div>
+	      </li>
+	     </div>
+	      <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/titles/getTitlesListDistinct">업무목록</a>
+	      </li>  
+	      <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/salaries/getSalariesStatistics">연봉 통계</a>
+	      </li>  
+	      <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/employees/getEmployeesListCountByGender">역대 사원 수</a>
+	      </li>  
+	      <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/department/getDepartmentCountByDeptNo">현재 재직 사원</a>
+	      </li>  
+	    </ul>
+	  </div>  
+	</nav>
+
+<!-- 메인내용 -->
 <div class="container">
+	<br>
 	<h1>사원 목록</h1>
-		<div>
-			<a href = "${pageContext.request.contextPath}" class="btn btn-info" role="button">home</a>
-		</div>
 		<form action="${pageContext.request.contextPath}/employees/getEmployeesList" method = "get">
 			<!-- request.getContextPath()는 이제 안씀 -->
 			<!-- 10개 단위로 출력옵션 -->
+			<br>
 			<select name = "limit">
 				<option value = "10">10</option>
 				<option value = "20">20</option>
@@ -36,6 +82,7 @@
 			</select>
 			<button type = "submit" class="btn btn-outline-secondary">사원 목록</button>
 		</form>
+		<br>
 		<table class="table table-bordered">
 		<!-- 실제 출력 테이블 -->
 			<thead>
